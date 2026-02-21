@@ -1,0 +1,23 @@
+BUG 01
+Название: Метод capitalize класса StringUtils переводит все символы >= 1 в нижний регистр
+Описание: Метод должен делать первый (0) символ, если это буква - заглавной, и возвращать этот же текст, 
+который подавался на ввод, вместо этого метод возвращает весь текст (кроме первой буквы) в нижнем регистре.
+Severity: Major 
+Окружение: Python 3.14.3 | ОС: Windows 11 Pro | pytest: 9.0.2
+Воспроизведение: 
+
+import pytest
+from string_utils import StringUtils #импортируем класс
+
+string_utils = StringUtils()
+
+
+@pytest.mark.parametrize("string, expected", [  
+    ('skyPro', 'SkyPro'),  #Пример №1 (вернётся 'Skypro')
+    ('kerama Marazzi', 'Kerama Marazzi'),  #Пример №2 (вернётся 'Kerama marazzi')
+])
+def test_capitalize_positive(string, expected):
+    assert string_utils.capitalize(string) == expected
+
+Ожидаемый результат: первая буква возвращается заглавной, последующие - остаются неизменными
+Фактический результат: первая буква возвращается заглавной, последующие - всегда в нижнем регистре
