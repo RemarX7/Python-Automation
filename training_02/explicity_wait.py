@@ -10,8 +10,7 @@ driver.get("http://www.uitestingplayground.com/progressbar")
 
 driver.find_element(By.CSS_SELECTOR, "#startButton").click()
 
-waiter = WebDriverWait(driver, 40, 0.01)
-waiter.until(
+waiter = WebDriverWait(driver, 40, 0.01).until(
     EC.text_to_be_present_in_element((By.CSS_SELECTOR, "#progressBar"), "75%")
 )
 
