@@ -6,13 +6,10 @@ from selenium.webdriver.support import expected_conditions as EC
 driver = webdriver.Chrome()
 driver.get("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html")
 
-selectors = ["#compass", "#calendar", "#award", "#landscape"]
-
-for selector in selectors:
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, selector))
-    )
-
-print(driver.find_element(By.CSS_SELECTOR, selectors[2]).get_attribute("src"))
+WebDriverWait(driver, 10).until(
+    EC.text_to_be_present_in_element((By.ID, "text"), "Done!")
+)
+images = driver.find_elements(By.CSS_SELECTOR, "#image-container img")
+print(images[2].get_attribute("src"))
 
 driver.quit()
