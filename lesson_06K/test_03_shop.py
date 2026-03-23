@@ -15,7 +15,7 @@ def test_shop():
         driver.find_element(By.ID, "password").send_keys("secret_sauce")
         driver.find_element(By.ID, "login-button").click()
 
-        backpack = WebDriverWait(driver, 5).until(
+        WebDriverWait(driver, 5).until(
             EC.visibility_of_element_located(
                 (By.ID, "add-to-cart-sauce-labs-backpack"))
         ).click()
@@ -24,7 +24,7 @@ def test_shop():
         driver.find_element(By.ID, "add-to-cart-sauce-labs-onesie").click()
         driver.find_element(By.CSS_SELECTOR, ".shopping_cart_link").click()
 
-        checkout = WebDriverWait(driver, 5).until(
+        WebDriverWait(driver, 5).until(
             EC.visibility_of_element_located((By.ID, "checkout"))
         ).click()
         driver.find_element(By.ID, "first-name").send_keys("Alexander")

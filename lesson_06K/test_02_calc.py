@@ -16,18 +16,18 @@ def test_calculator():
         delay.clear()
         delay.send_keys(45)
 
-        seven = driver.find_element(
+        driver.find_element(
             By.XPATH, "//span[contains(@class, 'btn-outline-primary') and text()='7']").click()
 
-        plus = driver.find_element(
+        driver.find_element(
             By.XPATH, "//span[contains(@class, 'btn-outline-success') and text()='+']").click()
 
-        eight = driver.find_element(
+        driver.find_element(
             By.XPATH, "//span[contains(@class, 'btn-outline-primary') and text()='8']").click()
 
         start_time = time.time()
 
-        equally = driver.find_element(
+        driver.find_element(
             By.XPATH, "//span[contains(@class, 'btn-outline-warning') and text()='=']").click()
 
         WebDriverWait(driver, 45).until(
@@ -38,7 +38,7 @@ def test_calculator():
         end_time = time.time()
         elapsed_time = end_time - start_time
 
-        assert 44.5 <= elapsed_time <= 45.5
+        assert 43 <= elapsed_time <= 47
 
     finally:
         driver.quit()

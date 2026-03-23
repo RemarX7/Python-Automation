@@ -31,7 +31,7 @@ def test_fill_form():
         driver.find_element(
             By.CSS_SELECTOR, ".btn.btn-outline-primary.mt-3").click()
 
-        zip_code_result = WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, "zip-code"))
         )
 
