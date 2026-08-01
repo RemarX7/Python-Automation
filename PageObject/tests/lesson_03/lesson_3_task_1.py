@@ -1,4 +1,4 @@
-from user import User
+from PageObject.tests.lesson_03.user import User
 
 my_user = User('Ivan', 'Petrov')
 

@@ -1,4 +1,4 @@
-from smartphone import Smartphone
+from PageObject.tests.lesson_03.smartphone import Smartphone
 
 catalog = [
     Smartphone('Samsung', 'Galaxy', '+79995559999'),

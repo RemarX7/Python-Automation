@@ -1,5 +1,5 @@
-from address import Address
-from mailing import Mailing
+from PageObject.tests.lesson_03.address import Address
+from PageObject.tests.lesson_03.mailing import Mailing
 
 to_address = Address('522000', 'Rostov-on-Don', 'Pushkina', 11, 209)
 from_address = Address('500100', 'Rostov-on-Don', 'Lermontova', 14, 1)

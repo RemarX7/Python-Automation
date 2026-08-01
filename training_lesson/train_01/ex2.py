@@ -1,4 +1,4 @@
-from book import Book
+from training_lesson.train_01.book import Book
 
 library = [
     Book("1984", "George Orwell"),

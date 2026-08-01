@@ -1,4 +1,4 @@
-from student import Student
+from training_lesson.train_01.student import Student
 
 class CourseGroup:
     def __init__(self, student, classmates):
