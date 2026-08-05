@@ -1,5 +1,5 @@
-from student import Student
-from course_group import CourseGroup
+from training_lesson.train_01.student import Student
+from training_lesson.train_01.course_group import CourseGroup
 
 # Создаем объекты класса Student для ученика и его сокурсников
 student = Student("Анна", "Иванова", 25, "Инженер по тестированию")

@@ -1,4 +1,4 @@
-from address import Address
+from PageObject.tests.lesson_03.address import Address
 
 
 class Mailing:

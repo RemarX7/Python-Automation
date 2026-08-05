@@ -17,7 +17,9 @@ def test_calculator():
         delay.send_keys(45)
 
         driver.find_element(
-            By.XPATH, "//span[contains(@class, 'btn-outline-primary') and text()='7']").click()
+            By.XPATH, 
+            "//span[contains(@class, 'btn-outline-primary') and text()='7']"
+        ).click()
 
         driver.find_element(
             By.XPATH, "//span[contains(@class, 'btn-outline-success') and text()='+']").click()
