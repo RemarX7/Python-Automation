@@ -8,13 +8,16 @@ class Database:
     # ===== SUBJECT =====
     def get_subjects(self):
         with self.db.connect() as conn:
-            result = conn.execute(text("SELECT * FROM subject WHERE deleted_at IS NULL"))
+            result = conn.execute(text("SELECT * FROM subject"))
             return result.mappings().all()
 
     def create_subject(self, subject_id, name):
         with self.db.connect() as conn:
             conn.execute(
-                text("INSERT INTO subject(subject_id, subject_title) VALUES (:id, :name)"),
+                text(
+                    "INSERT INTO subject(subject_id, subject_title) "
+                    "VALUES (:id, :name)"
+                ),
                 {"id": subject_id, "name": name}
             )
             conn.commit()
@@ -22,16 +25,11 @@ class Database:
     def update_subject(self, subject_id, new_name):
         with self.db.connect() as conn:
             conn.execute(
-                text("UPDATE subject SET subject_title = :name WHERE subject_id = :id"),
+                text(
+                    "UPDATE subject SET subject_title = :name "
+                    "WHERE subject_id = :id"
+                ),
                 {"id": subject_id, "name": new_name}
-            )
-            conn.commit()
-
-    def soft_delete_subject(self, subject_id):
-        with self.db.connect() as conn:
-            conn.execute(
-                text("UPDATE subject SET deleted_at = NOW() WHERE subject_id = :id"),
-                {"id": subject_id}
             )
             conn.commit()
 
@@ -45,18 +43,22 @@ class Database:
 
     def get_max_subject_id(self):
         with self.db.connect() as conn:
-            result = conn.execute(text("SELECT MAX(subject_id) FROM subject WHERE deleted_at IS NULL"))
+            result = conn.execute(text("SELECT MAX(subject_id) FROM subject"))
             return result.scalar()
 
-    def get_max_user_id(self):
+    # ===== USERS =====
+    def get_users(self):
         with self.db.connect() as conn:
-            result = conn.execute(text("SELECT MAX(user_id) FROM users WHERE deleted_at IS NULL"))
-            return result.scalar()
+            result = conn.execute(text("SELECT * FROM users"))
+            return result.mappings().all()
 
     def create_user(self, user_id, email, subject_id):
         with self.db.connect() as conn:
             conn.execute(
-                text("INSERT INTO users(user_id, user_email, subject_id) VALUES (:id, :email, :subject_id)"),
+                text(
+                    "INSERT INTO users(user_id, user_email, subject_id) "
+                    "VALUES (:id, :email, :subject_id)"
+                ),
                 {"id": user_id, "email": email, "subject_id": subject_id}
             )
             conn.commit()
@@ -69,7 +71,8 @@ class Database:
             )
             conn.commit()
 
-    def get_users(self):
+    def get_max_user_id(self):
         with self.db.connect() as conn:
-            result = conn.execute(text("SELECT * FROM users WHERE deleted_at IS NULL"))
-            return result.mappings().all()
+            result = conn.execute(text("SELECT MAX(user_id) FROM users"))
+            return result.scalar()
+    

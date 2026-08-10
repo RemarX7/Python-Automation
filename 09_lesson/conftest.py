@@ -1,7 +1,7 @@
 import pytest
 from company_table import Database
 
-DATABASE_URL = "PLACE URL"
+DATABASE_URL = "PLACE FOR URL"
 
 
 @pytest.fixture
