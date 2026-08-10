@@ -1,7 +1,7 @@
 import pytest
 from company_table import Database
 
-DATABASE_URL = "postgresql://postgres:qweqweffq124a@localhost:5432/QA"
+DATABASE_URL = "PLACE URL"
 
 
 @pytest.fixture
